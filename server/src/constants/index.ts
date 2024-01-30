@@ -1,0 +1,2 @@
+export const DISCOUNT_ORDER_INTERVAL = 5;
+export const DISCOUNT_PERCENTAGE = 10;
