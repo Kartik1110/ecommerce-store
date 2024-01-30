@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
 import userRouter from "./routes/user.routes";
+import adminRouter from "./routes/admin.routes";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 const mainRouter: Router = Router();
 mainRouter.use("/", userRouter);
+mainRouter.use("/", adminRouter);
 
 app.use("/api", mainRouter);
 
