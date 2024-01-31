@@ -11,13 +11,17 @@ adminRouter.post(
   '/discount/generate',
   validate(CreateDiscountSchema),
   async (req: Request, res: Response) => {
-    const { code, discount_percent } = req.body;
+    try {
+      const { code, discount_percent } = req.body;
 
-    await prisma.discount.create({
-      data: { code, discount_percent },
-    });
+      await prisma.discount.create({
+        data: { code, discount_percent },
+      });
 
-    res.status(200).send({ message: 'Discount generated' });
+      res.status(200).send({ message: 'Discount generated' });
+    } catch (error) {
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
   }
 );
 
