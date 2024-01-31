@@ -12,9 +12,9 @@ userRouter.get('/items', async (req: Request, res: Response) => {
   try {
     const items = await prisma.items.findMany({});
     if (items && items.length > 0) {
-      res.status(200).json({ message: 'Items found!', data: items });
+      res.status(200).json({ message: 'Items found', data: items });
     } else {
-      res.status(404).json({ message: 'Items not found!', data: [] });
+      res.status(404).json({ message: 'Items not found', data: [] });
     }
   } catch (error) {
     res.status(500).json({ message: 'Internal Server Error' });
